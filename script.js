@@ -12,8 +12,20 @@ function login() {
 function submitGrievance() {
   const title = document.getElementById("title").value;
   const message = document.getElementById("message").value;
+  const mood = document.getElementById("mood").value;
+  const severity = document.getElementById("severity").value;
 
   if (message) {
+    const logs = JSON.parse(localStorage.getItem('moodLogs')) || [];
+    logs.push({
+      title,
+      message,
+      mood,
+      severity,
+      time: new Date().toLocaleString()
+    });
+    localStorage.setItem('moodLogs', JSON.stringify(logs));
+
     document.getElementById("formScreen").classList.add("hidden");
     document.getElementById("thankYouScreen").classList.remove("hidden");
   } else {
