@@ -1,1 +1,46 @@
-<h1>Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Drop Box 💎</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-screen animate" id="loginScreen">
+    <h1>Mood Drop Box 💎</h1>
+    <p>For Diamonds Only. Emotions go in. No judgment comes out.</p>
+    <input type="text" id="username" placeholder="Username (Hint: It's still Diamond)" />
+    <input type="password" id="password" placeholder="Password (Try 'genie')" />
+    <button onclick="login()">Enter</button>
+  </div>
+
+  <div class="form-screen hidden animate" id="formScreen">
+    <h2>Log a Mood</h2>
+    <input type="text" id="title" placeholder="Title (optional)" />
+    <textarea id="message" placeholder="Drop your thoughts here, no pressure. Genie’s listening..."></textarea>
+    <select id="mood">
+      <option>Just Tired</option>
+      <option>Need Space</option>
+      <option>Overthinking Again</option>
+      <option>Blank but Heavy</option>
+    </select>
+    <select id="severity">
+      <option>Gentle Nudge</option>
+      <option>A drink at Orange</option>
+      <option>A quick drink at Police</option>
+      <option>Radio Silence Needed</option>
+    </select>
+    <button onclick="submitGrievance()">Send to Genie</button>
+  </div>
+
+  <div class="thankyou-screen hidden animate" id="thankYouScreen">
+    <h2>Got it, Diamond 💎</h2>
+    <p>Your mood has been safely dropped into the box.</p>
+    <p>Genie’s holding it gently. No fixes. Just presence.</p>
+    <button onclick="restart()">Log Another</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
