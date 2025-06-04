@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Log – Genie View</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .log-container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fffafc;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(186, 85, 211, 0.2);
+    }
+
+    .entry {
+      background: #ffe0f5;
+      border-left: 6px solid #ba55d3;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .entry h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      color: #800080;
+    }
+
+    .entry p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: gray;
+      text-align: right;
+    }
+
+    h1 {
+      text-align: center;
+      color: #6a0dad;
+    }
+  </style>
+</head>
+<body>
+  <h1>Genie's Mood Log 💬</h1>
+  <div class="log-container" id="logContainer">
+    <!-- Entries will appear here -->
+  </div>
+
+  <script>
+    const container = document.getElementById('logContainer');
+    const logs = JSON.parse(localStorage.getItem('moodLogs')) || [];
+
+    if (logs.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>No moods logged yet.</p>";
+    } else {
+      logs.reverse().forEach(log => {
+        const div = document.createElement('div');
+        div.className = 'entry';
+        div.innerHTML = `
+          <h3>${log.title || 'Untitled Entry'}</h3>
+          <p><strong>Feeling:</strong> ${log.mood}</p>
+          <p><strong>Severity:</strong> ${log.severity}</p>
+          <p><strong>Message:</strong> ${log.message}</p>
+          <div class="timestamp">${log.time}</div>
+        `;
+        container.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
